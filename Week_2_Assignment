@@ -1,0 +1,2 @@
+[lmschent@colossus in_class_assignments]$  efetch -db=nucleotide -id=NC_008535.1 -format=gb>chloroplast_coffee_genome.gbk
+[lmschent@colossus in_class_assignments]$ python genbank_to_fasta.py chloroplast_coffee_genome.gbk chloroplast_coffee_genome.fasta
