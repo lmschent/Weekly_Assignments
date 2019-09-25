@@ -1,13 +1,12 @@
 [lmschent@colossus in_class_assignments]$  efetch -db=nucleotide -id=NC_008535.1 -format=gb>chloroplast_coffee_genome.gbk
 [lmschent@colossus in_class_assignments]$ python genbank_to_fasta.py chloroplast_coffee_genome.gbk chloroplast_coffee_genome.fasta
 
-[lmschent@colossus in_class_assignments]$ grep 'protein' chloroplast_coffee_genome.fasta
-46
+[lmschent@colossus in_class_assignments]$ grep ">" -c chloroplast_coffee_genome.fasta
+85
 
-[lmschent@colossus in_class_assignments]$ grep 'protein' chloroplast_coffee_genome.fasta>chloroplast_protein_names.fasta
-[lmschent@colossus in_class_assignments]$ grep 'photosystem' chloroplast_protein_names.fasta
-19
+[lmschent@colossus in_class_assignments]$ grep 'photosystem' chloroplast_coffee_genome.fasta>chloroplast_protein_names.fasta
+[lmschent@colossus in_class_assignments]$ grep 'subunit' chloroplast_protein_names.fasta
+3
 
-[lmschent@colossus in_class_assignments]$ grep 'CF1' chloroplast_coffee_genome.fasta | head
-[lmschent@colossus in_class_assignments]$ efetch -db=nucleotide -id=NC_008535 -format=gb>CF1_chloroplast_coffee.gbk
-[lmschent@colossus in_class_assignments]$ python genbank_to_fasta.py CF1_chloroplast_coffee.gbk CF1_chloroplast.coffee.fasta
+[lmschent@colossus in_class_assignments]$ grep -A2 'CF1 beta subunit' chloroplast_coffee_genome.fasta>CF1_beta_subunit.fasta
+ast_coffee.fasta
