@@ -1,0 +1,6 @@
+cd scratch_30_day_tmp/lmschent/
+cd weekly_assignments
+wget https://github.com/stechtmann/BL4300-5300/raw/master/data/Weekly_Assignment_data/Unk_therm.faa
+makeblastdb -in Unk_therm.faa -dbtype prot -title Unk_therm
+blastp -db Unk_therm.faa -query HSP_prot.fasta -out HSP_prot.txt -outfmt 7
+less HSP_prot.txt
