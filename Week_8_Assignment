@@ -1,0 +1,16 @@
+metadata<- read_csv("DE/data/WA8_Metadata.csv")
+counts<- read_csv("DE/data/WA_counts.csv")
+counts<- as.data.frame(counts)
+metadata<- as.data.frame(metadata)
+dds.data <- DESeqDataSetFromMatrix(countData=counts, 
+                                   colData=metadata, 
+                                   design=~dex, 
+                                   tidy=TRUE)
+dds.data
+dds <- DESeq(dds.data)
+res <- results(dds, tidy=TRUE)
+res <- tbl_df(res)
+res
+res2 <- arrange(res, padj)
+res3 <- filter(res2, padj<=0.05 & log2FoldChange>=2)
+res4 <- filter(res2, padj<=0.05 & log2FoldChange<=-2)
