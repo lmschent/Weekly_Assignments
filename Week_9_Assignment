@@ -1,0 +1,25 @@
+res=mutate(res,dex=ifelse(log2FoldChange<1, "control","mutant"))
+
+ggplot(res)+
+  geom_point(aes(x=log2FoldChange,y=-log10(padj),color=dex))+
+  scale_color_manual(values=c("control"="blue","mutant"="red"))+
+  xlab("log2FoldChange")+
+  ylab("-log10 adjusted p-value")+
+  theme(legend.position = "none",
+        plot.title = element_text(size = rel(1.5), hjust = 0.5),
+        axis.title = element_text(size = rel(1.25)))  +
+  theme_bw()
+  
+  
+  plotCounts(res, gene="Solyc11g028040.1.1", intgroup="log2foldchange", returnData=TRUE) %>%
+  ggplot(aes(log2foldchange,count))+
+  geom_boxplot(aes(fill=log2foldchange))
+  
+ plotCounts(dds, gene="Solyc09g089500.2.1", intgroup="dex", returnData=TRUE) %>%
+  ggplot(aes(dex,count))+
+  geom_boxplot(aes(fill=dex))
+  
+  res=mutate(res,log10=log10(baseMean))
+  
+  ggplot(res)+
+  geom_point(aes(x=log10, y=log2FoldChange))
